@@ -1,0 +1,49 @@
+<div class="container mt-5 review-section">
+  <h2>Review Your Details</h2>
+
+  <div class="card mt-3 print-section">
+    <h3 class="card-header">Application Preview</h3>
+    <div class="card-body">
+      <!-- Iterate over each section in userDetails -->
+      <div class="section" *ngFor="let section of getKeys(userDetails)">
+        <h5 class="mt-4">{{ formatKey(section) }}</h5>
+        <table class="table table-bordered">
+          <tbody>
+            <!-- Check if the section is not an array (i.e., it's an object) -->
+            <ng-container *ngIf="!isArray(userDetails[section])">
+              <tr *ngFor="let key of getKeys(userDetails[section])">
+                <th class="key-column" scope="row">{{ formatKey(key) }}</th>
+                <td class="value-column">{{ userDetails[section][key] }}</td>
+              </tr>
+            </ng-container>
+
+            <!-- If the section is an array, iterate over its items -->
+            <ng-container *ngIf="isArray(userDetails[section])">
+              <!-- Section title for each array item -->
+              <ng-container
+                *ngFor="let item of userDetails[section]; let i = index"
+              >
+                <tr>
+                  <td colspan="2" class="text-center">
+                    <strong>{{ formatKey(section) }} {{ i + 1 }}</strong>
+                  </td>
+                </tr>
+                <!-- Iterate over each key in the array item -->
+                <tr *ngFor="let key of getKeys(item)">
+                  <th class="key-column" scope="row">{{ formatKey(key) }}</th>
+                  <td class="value-column">{{ item[key] }}</td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-3 d-flex gap-2 justify-content-end">
+    <button class="btn btn-secondary" (click)="editDetails()">Edit</button>
+    <button class="btn btn-success" (click)="onSubmit()">Submit</button>
+    <button class="btn btn-primary" (click)="printPage()">Print</button>
+  </div>
+</div>

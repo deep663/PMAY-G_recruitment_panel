@@ -1,0 +1,116 @@
+<div class="container mt-5">
+  <h2>Work Experience Details</h2>
+  <form (ngSubmit)="onSubmit(workExperienceForm)" #workExperienceForm="ngForm">
+    <div
+      *ngFor="let work of workExperienceArray; let i = index"
+      class="work-experience-entry mb-4 w-50 m-auto"
+    >
+      <h4 class="text-center">Work Experience {{ i + 1 }}</h4>
+
+      <!-- Job Title -->
+      <div class="form-group mb-3">
+        <label class="form-label" for="jobTitle-{{ i }}">Job Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="jobTitle-{{ i }}"
+          [(ngModel)]="work.position"
+          name="jobTitle-{{ i }}"
+          placeholder="Enter Job Title"
+          required
+        />
+      </div>
+
+      <!-- Company Name -->
+      <div class="form-group mb-3">
+        <label class="form-label" for="company-{{ i }}">Company Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="company-{{ i }}"
+          [(ngModel)]="work.company_name"
+          name="company-{{ i }}"
+          placeholder="Enter Company Name"
+          required
+        />
+      </div>
+
+      <!-- Duration -->
+      <div class="form-group mb-3">
+        <div class="row">
+          <!-- From Date -->
+          <div class="col-md-6">
+            <label class="form-label" for="from-{{ i }}">From</label>
+            <input
+              type="date"
+              class="form-control"
+              id="from-{{ i }}"
+              [(ngModel)]="work.from"
+              name="from-{{ i }}"
+              placeholder="Enter Start Date"
+              required
+            />
+          </div>
+
+          <!-- To Date -->
+          <div class="col-md-6">
+            <label class="form-label" for="to-{{ i }}">To</label>
+            <input
+              type="date"
+              class="form-control"
+              id="to-{{ i }}"
+              [(ngModel)]="work.to"
+              name="to-{{ i }}"
+              placeholder="Enter End Date"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Location -->
+      <div class="form-group mb-3">
+        <label class="form-label" for="location-{{ i }}">Location</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location-{{ i }}"
+          [(ngModel)]="work.location"
+          name="location-{{ i }}"
+          placeholder="Enter Location"
+          required
+        />
+      </div>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="removeWorkExperience(i)"
+          *ngIf="workExperienceArray.length > 1"
+        >
+          Remove
+        </button>
+      </div>
+
+      <hr />
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+      <button type="button" class="btn btn-secondary" (click)="addWorkExperience()">
+        Add More Experience
+      </button>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!workExperienceForm.form.valid"
+      >
+        Save and Next
+      </button>
+    </div>
+  </form>
+</div>

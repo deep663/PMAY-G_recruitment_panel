@@ -1,0 +1,37 @@
+.key-column {
+  width: 30%;
+}
+
+.value-column {
+  width: 70%;
+}
+
+@media print {
+
+  .btn {
+    display: none;
+  }
+
+  .review-section {
+    /* display: none; */
+    visibility: hidden;
+  }
+
+  /* .print-section, .section {
+    page-break-inside: avoid;
+  } */
+
+  .print-section, .print-section * {
+    visibility: visible;
+  }
+
+  .print-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+
+
+}

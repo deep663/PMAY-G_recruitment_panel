@@ -1,0 +1,40 @@
+angular-project/
+│
+├── public/
+├── node_modules/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │     ├── educational-details/
+│   │   │     ├── footer/
+│   │   │     ├── header/
+│   │   │     ├── landing/
+│   │   │     ├── personal-details/
+│   │   │     ├── review-submit/
+│   │   │     ├── select-post/
+│   │   │     ├── status/
+│   │   │     ├── upload-document/
+│   │   │     └── work-experience/
+│   │   │
+│   │   ├── pages/
+│   │   │     ├── application/
+│   │   │     ├── home/
+│   │   │     ├── login/
+│   │   │     └── register/
+│   │   │
+│   │   ├── guards/
+│   │   ├── app.component.ts
+│   │   ├── app.module.ts
+│   │   └── app-routing.module.ts
+│   │
+│   │
+│   ├── environments/
+│   ├── index.html
+│   ├── main.ts
+│   ├── styles.css
+│   └── favicon.ico
+│
+├── angular.json
+├── package.json
+├── tsconfig.json
+└── tslint.json (optional)

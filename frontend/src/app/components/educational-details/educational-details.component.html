@@ -1,0 +1,110 @@
+<div class="container mt-5">
+  <h2>Educational Details</h2>
+  <form (ngSubmit)="onSubmit(educationForm)" #educationForm="ngForm">
+    <div
+      *ngFor="let education of educationArray; let i = index"
+      class="education-entry mb-4"
+    >
+      <h4 class="text-center">Qualification {{ i + 1 }}</h4>
+
+      <!-- Qualification Type -->
+      <div class="form-group mb-3">
+        <label class="form-label" for="qualification-{{ i }}">Qualification</label>
+        <input
+          type="text"
+          class="form-control"
+          id="qualification-{{ i }}"
+          [(ngModel)]="education.examination_name"
+          name="qualification-{{ i }}"
+          placeholder="Enter Qualification"
+          required
+        />
+      </div>
+
+      <!-- Institute Name -->
+      <div class="form-group mb-3">
+        <label class="form-label" for="institute-{{ i }}">Institute</label>
+        <input
+          type="text"
+          class="form-control"
+          id="institute-{{ i }}"
+          [(ngModel)]="education.institute_name"
+          name="institute-{{ i }}"
+          placeholder="Enter Institute Name"
+          required
+        />
+      </div>
+
+      <!-- University/Board Name -->
+      <div class="form-group mb-3">
+        <label class="form-label" for="university-{{ i }}">University/Board</label>
+        <input
+          type="text"
+          class="form-control"
+          id="university-{{ i }}"
+          [(ngModel)]="education.board"
+          name="university-{{ i }}"
+          placeholder="Enter University/Board Name"
+          required
+        />
+      </div>
+
+      <!-- Year of Passing -->
+      <div class="form-group mb-3">
+        <label class="form-label" for="passingYear-{{ i }}">Year of Passing</label>
+        <input
+          type="text"
+          class="form-control"
+          id="passingYear-{{ i }}"
+          [(ngModel)]="education.passing_year"
+          name="passingYear-{{ i }}"
+          placeholder="Enter Year of Passing"
+          required
+        />
+      </div>
+
+      <!-- Percentage/CGPA -->
+      <div class="form-group mb-3">
+        <label class="form-label" for="marks-{{ i }}">Percentage/CGPA</label>
+        <input
+          type="text"
+          class="form-control"
+          id="marks-{{ i }}"
+          [(ngModel)]="education.result"
+          name="marks-{{ i }}"
+          placeholder="Enter Percentage/CGPA"
+          required
+        />
+      </div>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="removeEducation(i)"
+          *ngIf="educationArray.length > 1"
+        >
+          Remove
+        </button>
+      </div>
+
+      <hr />
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+      <button type="button" class="btn btn-secondary" (click)="addEducation()">
+        Add More Education
+      </button>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!educationForm.form.valid"
+      >
+        Save and Next
+      </button>
+    </div>
+  </form>
+</div>

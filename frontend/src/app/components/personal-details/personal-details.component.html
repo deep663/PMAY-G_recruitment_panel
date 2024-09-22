@@ -1,0 +1,380 @@
+<div class="container">
+  <h3 class="mb-4">Personal Details</h3>
+  <hr>
+  <form (ngSubmit)="onSubmit(personalDetailsForm)" #personalDetailsForm="ngForm">
+    <!-- First Name and Last Name -->
+    <div class="mb-3 row">
+      <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="firstName"
+          class="form-control"
+          id="firstName"
+          placeholder="Enter your first name"
+          ngModel
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[a-zA-Z]+$"
+          #firstName="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || firstName.touched">
+          <div *ngIf="firstName.errors?.['required']" class="text-danger">First Name is required.</div>
+          <div *ngIf="firstName.errors?.['minlength']" class="text-danger">First Name must be at least 2 characters long.</div>
+          <div *ngIf="firstName.errors?.['maxlength']" class="text-danger">First Name cannot exceed 50 characters.</div>
+          <div *ngIf="firstName.errors?.['pattern']" class="text-danger">First Name can only contain letters.</div>
+        </div>
+      </div>
+
+      <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="lastName"
+          class="form-control"
+          id="lastName"
+          placeholder="Enter your last name"
+          ngModel
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[a-zA-Z]+$"
+          #lastName="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || lastName.touched">
+          <div *ngIf="lastName.errors?.['required']" class="text-danger">Last Name is required.</div>
+          <div *ngIf="lastName.errors?.['minlength']" class="text-danger">Last Name must be at least 2 characters long.</div>
+          <div *ngIf="lastName.errors?.['maxlength']" class="text-danger">Last Name cannot exceed 50 characters.</div>
+          <div *ngIf="lastName.errors?.['pattern']" class="text-danger">Last Name can only contain letters.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Father Name and Mother Name -->
+    <div class="mb-3 row">
+      <label for="fatherName" class="col-sm-2 col-form-label">Father Name</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="fatherName"
+          class="form-control"
+          id="fatherName"
+          placeholder="Enter your father name"
+          ngModel
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[a-zA-Z ]+$"
+          #fatherName="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || fatherName.touched">
+          <div *ngIf="fatherName.errors?.['required']" class="text-danger">Father Name is required.</div>
+          <div *ngIf="fatherName.errors?.['minlength']" class="text-danger">Father Name must be at least 2 characters long.</div>
+          <div *ngIf="fatherName.errors?.['maxlength']" class="text-danger">Father Name cannot exceed 50 characters.</div>
+          <div *ngIf="fatherName.errors?.['pattern']" class="text-danger">Father Name can only contain letters and spaces.</div>
+        </div>
+      </div>
+
+      <label for="motherName" class="col-sm-2 col-form-label">Mother Name</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="motherName"
+          class="form-control"
+          id="motherName"
+          placeholder="Enter your mother name"
+          ngModel
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[a-zA-Z ]+$"
+          #motherName="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || motherName.touched">
+          <div *ngIf="motherName.errors?.['required']" class="text-danger">Mother Name is required.</div>
+          <div *ngIf="motherName.errors?.['minlength']" class="text-danger">Mother Name must be at least 2 characters long.</div>
+          <div *ngIf="motherName.errors?.['maxlength']" class="text-danger">Mother Name cannot exceed 50 characters.</div>
+          <div *ngIf="motherName.errors?.['pattern']" class="text-danger">Mother Name can only contain letters and spaces.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Date of Birth and Gender -->
+    <div class="mb-3 row">
+      <label for="dob" class="col-sm-2 col-form-label">Date of Birth</label>
+  <div class="col-sm-4">
+    <input
+      type="date"
+      name="dob"
+      class="form-control"
+      id="dob"
+      placeholder="Enter your date of birth"
+      ngModel
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      required
+      #dob="ngModel"
+    />
+    <div *ngIf="personalDetailsForm.submitted || dob.touched">
+      <div *ngIf="dob.errors?.['required']" class="text-danger">Date of Birth is required.</div>
+    </div>
+  </div>
+
+      <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+      <div class="col-sm-4">
+        <select name="gender" class="form-select" id="gender" ngModel required #gender="ngModel">
+          <option value="" disabled>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <div *ngIf="personalDetailsForm.submitted || gender.touched">
+          <div *ngIf="gender.errors?.['required']" class="text-danger">Gender is required.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marital Status and Religion -->
+    <div class="mb-3 row">
+      <label for="maritalStatus" class="col-sm-2 col-form-label">Marital Status</label>
+      <div class="col-sm-4">
+        <select name="maritalStatus" class="form-select" id="maritalStatus" ngModel required #maritalStatus="ngModel">
+          <option value="" disabled>Select Marital Status</option>
+          <option value="Married">Married</option>
+          <option value="Unmarried">Unmarried</option>
+        </select>
+        <div *ngIf="personalDetailsForm.submitted || maritalStatus.touched">
+          <div *ngIf="maritalStatus.errors?.['required']" class="text-danger">Marital Status is required.</div>
+        </div>
+      </div>
+
+      <label for="religion" class="col-sm-2 col-form-label">Religion</label>
+      <div class="col-sm-4">
+        <select name="religion" class="form-select" id="religion" ngModel required #religion="ngModel">
+          <option value="" disabled>Select Religion</option>
+          <option value="Hindu">Hindu</option>
+          <option value="Muslim">Muslim</option>
+          <option value="Christian">Christian</option>
+          <option value="Other">Other</option>
+        </select>
+        <div *ngIf="personalDetailsForm.submitted || religion.touched">
+          <div *ngIf="religion.errors?.['required']" class="text-danger">Religion is required.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Caste and Country -->
+    <div class="mb-3 row">
+      <label for="caste" class="col-sm-2 col-form-label">Caste</label>
+      <div class="col-sm-4">
+        <select name="caste" class="form-select" id="caste" ngModel required #caste="ngModel">
+          <option value="" disabled>Select Caste</option>
+          <option value="General">General</option>
+          <option value="OBC">OBC</option>
+          <option value="SC">SC</option>
+          <option value="ST">ST</option>
+          <option value="Other">Other</option>
+        </select>
+        <div *ngIf="personalDetailsForm.submitted || caste.touched">
+          <div *ngIf="caste.errors?.['required']" class="text-danger">Caste is required.</div>
+        </div>
+      </div>
+
+      <label for="country" class="col-sm-2 col-form-label">Country</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="country"
+          class="form-control"
+          id="country"
+          placeholder="Enter your country"
+          ngModel
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[a-zA-Z ]+$"
+          #country="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || country.touched">
+          <div *ngIf="country.errors?.['required']" class="text-danger">Country is required.</div>
+          <div *ngIf="country.errors?.['minlength']" class="text-danger">Country must be at least 2 characters long.</div>
+          <div *ngIf="country.errors?.['maxlength']" class="text-danger">Country cannot exceed 50 characters.</div>
+          <div *ngIf="country.errors?.['pattern']" class="text-danger">Country can only contain letters and spaces.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile and Email -->
+    <div class="mb-3 row">
+      <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="mobile"
+          class="form-control"
+          id="mobile"
+          placeholder="Enter your mobile number"
+          ngModel
+          required
+          pattern="^[0-9]{10}$"
+          #mobile="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || mobile.touched">
+          <div *ngIf="mobile.errors?.['required']" class="text-danger">Mobile number is required.</div>
+          <div *ngIf="mobile.errors?.['pattern']" class="text-danger">Mobile number must be 10 digits long.</div>
+        </div>
+      </div>
+
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-4">
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter your email"
+          ngModel
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          #email="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || email.touched">
+          <div *ngIf="email.errors?.['required']" class="text-danger">Email is required.</div>
+          <div *ngIf="email.errors?.['email']" class="text-danger">Please enter a valid email address.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="mb-3 row">
+      <label for="address" class="col-sm-2 col-form-label">Address</label>
+      <div class="col-sm-10">
+        <textarea
+          name="address"
+          class="form-control"
+          id="address"
+          placeholder="Enter your address"
+          rows="2"
+          ngModel
+          required
+          minlength="10"
+          maxlength="200"
+          #address="ngModel"
+        ></textarea>
+        <div *ngIf="personalDetailsForm.submitted || address.touched">
+          <div *ngIf="address.errors?.['required']" class="text-danger">Address is required.</div>
+          <div *ngIf="address.errors?.['minlength']" class="text-danger">Address must be at least 10 characters long.</div>
+          <div *ngIf="address.errors?.['maxlength']" class="text-danger">Address cannot exceed 200 characters.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- City and District -->
+    <div class="mb-3 row">
+      <label for="city" class="col-sm-2 col-form-label">City</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="city"
+          class="form-control"
+          id="city"
+          placeholder="Enter your city"
+          ngModel
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[a-zA-Z ]+$"
+          #city="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || city.touched">
+          <div *ngIf="city.errors?.['required']" class="text-danger">City is required.</div>
+          <div *ngIf="city.errors?.['minlength']" class="text-danger">City must be at least 2 characters long.</div>
+          <div *ngIf="city.errors?.['maxlength']" class="text-danger">City cannot exceed 50 characters.</div>
+          <div *ngIf="city.errors?.['pattern']" class="text-danger">City can only contain letters and spaces.</div>
+        </div>
+      </div>
+
+      <label for="district" class="col-sm-2 col-form-label">District</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="district"
+          class="form-control"
+          id="district"
+          placeholder="Enter your district"
+          ngModel
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[a-zA-Z ]+$"
+          #district="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || district.touched">
+          <div *ngIf="district.errors?.['required']" class="text-danger">District is required.</div>
+          <div *ngIf="district.errors?.['minlength']" class="text-danger">District must be at least 2 characters long.</div>
+          <div *ngIf="district.errors?.['maxlength']" class="text-danger">District cannot exceed 50 characters.</div>
+          <div *ngIf="district.errors?.['pattern']" class="text-danger">District can only contain letters and spaces.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- State and Pincode -->
+    <div class="mb-3 row">
+      <label for="state" class="col-sm-2 col-form-label">State</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="state"
+          class="form-control"
+          id="state"
+          placeholder="Enter your state"
+          ngModel
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[a-zA-Z ]+$"
+          #state="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || state.touched">
+          <div *ngIf="state.errors?.['required']" class="text-danger">State is required.</div>
+          <div *ngIf="state.errors?.['minlength']" class="text-danger">State must be at least 2 characters long.</div>
+          <div *ngIf="state.errors?.['maxlength']" class="text-danger">State cannot exceed 50 characters.</div>
+          <div *ngIf="state.errors?.['pattern']" class="text-danger">State can only contain letters and spaces.</div>
+        </div>
+      </div>
+
+      <label for="pincode" class="col-sm-2 col-form-label">Pincode</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="pincode"
+          class="form-control"
+          id="pincode"
+          placeholder="Enter your pincode"
+          ngModel
+          required
+          pattern="^[0-9]{6}$"
+          #pincode="ngModel"
+        />
+        <div *ngIf="personalDetailsForm.submitted || pincode.touched">
+          <div *ngIf="pincode.errors?.['required']" class="text-danger">Pincode is required.</div>
+          <div *ngIf="pincode.errors?.['pattern']" class="text-danger">Pincode must be 6 digits long.</div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="submissionError" class="alert alert-danger">
+      {{ submissionError }}
+    </div>
+
+    <hr>
+
+    <!-- Submit Button -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        {{ isLoading ? 'Submitting...' : 'Save and Next' }}
+      </button>
+    </div>
+  </form>
+</div>

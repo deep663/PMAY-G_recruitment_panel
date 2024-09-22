@@ -1,0 +1,60 @@
+<!-- <title class="title text-center">Post Title</title> -->
+
+<div id="progressbar" class="container mt-5 mb-5">
+  <div class="progress-indicator d-flex justify-content-between">
+    <div
+      class="flex-fill text-center step"
+      [class.completed]="currentStep >= 1"
+    >
+      <div class="step-icon">
+        <i class="bi bi-person-circle"></i>
+      </div>
+      <p>Personal Details</p>
+    </div>
+    <div
+      class="flex-fill text-center step"
+      [class.completed]="currentStep >= 2"
+    >
+      <div class="step-icon">
+        <i class="bi bi-mortarboard"></i>
+      </div>
+      <p>Educational Qualification</p>
+    </div>
+    <div
+      class="flex-fill text-center step"
+      [class.completed]="currentStep >= 3"
+    >
+      <div class="step-icon">
+        <i class="bi bi-card-text"></i>
+      </div>
+      <p>Work Experience</p>
+    </div>
+    <div
+      class="flex-fill text-center step"
+      [class.completed]="currentStep >= 4"
+    >
+      <div class="step-icon">
+        <i class="bi bi-cloud-upload"></i>
+      </div>
+      <p>Upload Documents</p>
+    </div>
+    <div
+      class="flex-fill text-center step"
+      [class.completed]="currentStep >= 5"
+    >
+      <div class="step-icon">
+        <i class="bi bi-check-square"></i>
+      </div>
+      <p>Review and Submit</p>
+    </div>
+  </div>
+</div>
+
+<div class="mb-5">
+  @if(applicationSubmitted){
+    <h3>Your application has been submitted.</h3>
+  }
+  @else {
+  <router-outlet></router-outlet>
+  }
+</div>

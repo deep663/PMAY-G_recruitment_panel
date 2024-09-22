@@ -1,0 +1,18 @@
+.blue {
+    color: #2a75bb;
+}
+
+.red {
+    color: #990000;
+}
+
+.bg-blue {
+    background-color: #2a75bb;
+}
+
+@media print {
+  #header {
+    /* display: none; */
+    visibility: hidden;
+  }
+}

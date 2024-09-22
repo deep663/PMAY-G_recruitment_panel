@@ -1,0 +1,100 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-start">
+    <a href="/home" class="btn d-flex gap-2">
+      <i class="bi bi-arrow-left"></i>
+      <div class="fw-bold">Back</div>
+    </a>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card" *ngIf="!loading">
+        <div class="card-header bg-blue">
+          <h4 class="text-center text-white">LogIn</h4>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+            <!-- Email Field -->
+            <div class="form-group mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                name="email"
+                ngModel
+                required
+                email
+                #email="ngModel"
+                placeholder="Enter your email"
+              />
+              <!-- Email Errors -->
+              <div
+                *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="text-danger"
+              >
+                <small *ngIf="email.errors?.['required']"
+                  >Email is required.</small
+                >
+                <small *ngIf="email.errors?.['email']"
+                  >Invalid email format.</small
+                >
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                name="password"
+                ngModel
+                required
+                minlength="8"
+                #password="ngModel"
+                placeholder="Enter your password"
+              />
+              <!-- Password Errors -->
+              <div
+                *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="text-danger"
+              >
+                <small *ngIf="password.errors?.['required']"
+                  >Password is required.</small
+                >
+                <small *ngIf="password.errors?.['minlength']"
+                  >Password must be at least 8 characters long.</small
+                >
+              </div>
+            </div>
+
+            <!-- Login Button -->
+            <div class="d-flex justify-content-center">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!loginForm.valid"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+
+          <!-- Not Registered Link -->
+          <div class="mt-3 text-center">
+            <span role="button" class="text-primary" (click)="forgotPassword()"> Forgot Password?</span>
+            <p class="text-muted">
+              Don't have an account?
+              <a href="/register" class="text-decoration-none">Register</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader -->
+    <div class="d-flex justify-content-center align-items-center mt-5 ">
+      <div class="loader" *ngIf="loading"></div>
+    </div>
+  </div>
+</div>

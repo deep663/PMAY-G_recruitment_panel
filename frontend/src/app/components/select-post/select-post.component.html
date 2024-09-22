@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <h2>Your Applications</h2>
+
+  <hr>
+  <table class="table table-striped">
+    <tbody>
+      <tr *ngFor="let application of appliedApplications">
+        <td>{{ application.selected_post}}</td>
+        <td class="text-end">
+
+            <span class="badge bg-primary me-1">Application No: {{ application.application_No }}</span>
+            <!-- Application ID: <span class="text-primary">{{ application.applicationId }}</span> -->
+        </td>
+        <td class="text-end">
+          <button class="btn btn-success btn-md" (click)="continueApplication(application.application_No)">
+            Continue
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+</div>

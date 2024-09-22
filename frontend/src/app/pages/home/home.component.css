@@ -1,0 +1,10 @@
+.bg-blue {
+    background-color: #2a75bb;
+}
+
+@media print {
+  #navbar {
+    /* display: none; */
+    visibility: hidden;
+  }
+}

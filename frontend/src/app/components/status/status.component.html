@@ -1,0 +1,43 @@
+<!-- application-status.component.html -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Application Status</h2>
+
+  <div class="card">
+    <div class="card-header">
+      <h4>Application Details</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <h5><strong>Applicant Name:</strong> {{ user_name }}</h5>
+        </div>
+        <!-- <div class="col-md-6">
+          <h5><strong>Application ID:</strong> {{ applicationId }}</h5>
+        </div> -->
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-start gap-2 align-items-center">
+          <h5><strong>Status:</strong></h5>
+          <p class="lead">
+            <span *ngIf="applicationStatus === 'submitted'" class="badge bg-warning">Submitted</span>
+            <span *ngIf="applicationStatus === 'approved'" class="badge bg-success">Approved</span>
+            <span *ngIf="applicationStatus === 'rejected'" class="badge bg-danger">Rejected</span>
+            <span *ngIf="applicationStatus === 'under_review'" class="badge bg-info">Under Review</span>
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col-md-12">
+          <h5><strong>Remarks:</strong></h5>
+          <p>{{ remarks }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
